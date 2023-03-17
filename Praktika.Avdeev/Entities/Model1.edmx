@@ -1,0 +1,1051 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище PrModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="ContractID" />
+          </Key>
+          <Property Name="ContractID" Type="int" Nullable="false" />
+          <Property Name="DateOfConclusion" Type="date" Nullable="false" />
+          <Property Name="DateOfExpiration" Type="date" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EquipmentReport">
+          <Key>
+            <PropertyRef Name="EquipmentReportID" />
+          </Key>
+          <Property Name="EquipmentReportID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TechicalDescription" Type="varchar" MaxLength="200" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="EngineerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Export">
+          <Key>
+            <PropertyRef Name="ExportID" />
+          </Key>
+          <Property Name="ExportID" Type="int" Nullable="false" />
+          <Property Name="MineralsID" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="ContractID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FinancialReport">
+          <Key>
+            <PropertyRef Name="FinancialReportID" />
+          </Key>
+          <Property Name="FinancialReportID" Type="int" Nullable="false" />
+          <Property Name="Payment" Type="int" Nullable="false" />
+          <Property Name="TypeOfFinancialActivityID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="AccountantID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HiringApplication">
+          <Key>
+            <PropertyRef Name="HiringApplicationID" />
+          </Key>
+          <Property Name="HiringApplicationID" Type="int" Nullable="false" />
+          <Property Name="RequirementsDescription" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ProfessionID" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="IsHired?" Type="bit" Nullable="false" />
+          <Property Name="EmployerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MineralReport">
+          <Key>
+            <PropertyRef Name="MneralReportID" />
+          </Key>
+          <Property Name="MneralReportID" Type="int" Nullable="false" />
+          <Property Name="ExportID" Type="int" Nullable="false" />
+          <Property Name="Revenue" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="ProductionDirectorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Minerals">
+          <Key>
+            <PropertyRef Name="MineralsID" />
+          </Key>
+          <Property Name="MineralsID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Profession">
+          <Key>
+            <PropertyRef Name="ProfessionID" />
+          </Key>
+          <Property Name="ProfessionID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="PurchaseApplication">
+          <Key>
+            <PropertyRef Name="PurchaseApplicationID" />
+          </Key>
+          <Property Name="PurchaseApplicationID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+          <Property Name="SupplyAgentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reserve">
+          <Key>
+            <PropertyRef Name="ReserveID" />
+          </Key>
+          <Property Name="ReserveID" Type="int" Nullable="false" />
+          <Property Name="MineralsID" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SolutionForStudy">
+          <Key>
+            <PropertyRef Name="SolutionForStudyID" />
+          </Key>
+          <Property Name="SolutionForStudyID" Type="int" Nullable="false" />
+          <Property Name="isConfirmed" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="StudyApplication">
+          <Key>
+            <PropertyRef Name="StudyApplicationID" />
+          </Key>
+          <Property Name="StudyApplicationID" Type="int" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="SolutionID" Type="int" Nullable="false" />
+          <Property Name="WorkerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudyCourse">
+          <Key>
+            <PropertyRef Name="StudyCourseID" />
+          </Key>
+          <Property Name="StudyCourseID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="YearsToStudy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypeOfFinancialActivity">
+          <Key>
+            <PropertyRef Name="TypeOfFinancialActivityID" />
+          </Key>
+          <Property Name="TypeOfFinancialActivityID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="varchar" MaxLength="50" />
+          <Property Name="ProfessionID" Type="int" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_EquipmentReport_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="EquipmentReport" Type="Self.EquipmentReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EquipmentReport">
+              <PropertyRef Name="EngineerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Export_Contract1">
+          <End Role="Contract" Type="Self.Contract" Multiplicity="1" />
+          <End Role="Export" Type="Self.Export" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contract">
+              <PropertyRef Name="ContractID" />
+            </Principal>
+            <Dependent Role="Export">
+              <PropertyRef Name="ContractID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Export_Minerals">
+          <End Role="Minerals" Type="Self.Minerals" Multiplicity="1" />
+          <End Role="Export" Type="Self.Export" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Minerals">
+              <PropertyRef Name="MineralsID" />
+            </Principal>
+            <Dependent Role="Export">
+              <PropertyRef Name="MineralsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinancialReport_TypeOfFinancialActivity">
+          <End Role="TypeOfFinancialActivity" Type="Self.TypeOfFinancialActivity" Multiplicity="1" />
+          <End Role="FinancialReport" Type="Self.FinancialReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfFinancialActivity">
+              <PropertyRef Name="TypeOfFinancialActivityID" />
+            </Principal>
+            <Dependent Role="FinancialReport">
+              <PropertyRef Name="TypeOfFinancialActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinancialReport_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="FinancialReport" Type="Self.FinancialReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="FinancialReport">
+              <PropertyRef Name="AccountantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiringApplication_Profession">
+          <End Role="Profession" Type="Self.Profession" Multiplicity="1" />
+          <End Role="HiringApplication" Type="Self.HiringApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profession">
+              <PropertyRef Name="ProfessionID" />
+            </Principal>
+            <Dependent Role="HiringApplication">
+              <PropertyRef Name="ProfessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiringApplication_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="HiringApplication" Type="Self.HiringApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="HiringApplication">
+              <PropertyRef Name="EmployerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MineralReport_Export">
+          <End Role="Export" Type="Self.Export" Multiplicity="1" />
+          <End Role="MineralReport" Type="Self.MineralReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Export">
+              <PropertyRef Name="ExportID" />
+            </Principal>
+            <Dependent Role="MineralReport">
+              <PropertyRef Name="ExportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MineralReport_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="MineralReport" Type="Self.MineralReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MineralReport">
+              <PropertyRef Name="ProductionDirectorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseApplication_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="PurchaseApplication" Type="Self.PurchaseApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="PurchaseApplication">
+              <PropertyRef Name="SupplyAgentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserve_Minerals">
+          <End Role="Minerals" Type="Self.Minerals" Multiplicity="1" />
+          <End Role="Reserve" Type="Self.Reserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Minerals">
+              <PropertyRef Name="MineralsID" />
+            </Principal>
+            <Dependent Role="Reserve">
+              <PropertyRef Name="MineralsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyApplication_SolutionForStudy">
+          <End Role="SolutionForStudy" Type="Self.SolutionForStudy" Multiplicity="1" />
+          <End Role="StudyApplication" Type="Self.StudyApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SolutionForStudy">
+              <PropertyRef Name="SolutionForStudyID" />
+            </Principal>
+            <Dependent Role="StudyApplication">
+              <PropertyRef Name="SolutionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyApplication_StudyCourse">
+          <End Role="StudyCourse" Type="Self.StudyCourse" Multiplicity="1" />
+          <End Role="StudyApplication" Type="Self.StudyApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudyCourse">
+              <PropertyRef Name="StudyCourseID" />
+            </Principal>
+            <Dependent Role="StudyApplication">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyApplication_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="StudyApplication" Type="Self.StudyApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="StudyApplication">
+              <PropertyRef Name="WorkerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Profession">
+          <End Role="Profession" Type="Self.Profession" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profession">
+              <PropertyRef Name="ProfessionID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ProfessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PrModelContainer">
+          <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentReport" EntityType="Self.EquipmentReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Export" EntityType="Self.Export" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FinancialReport" EntityType="Self.FinancialReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HiringApplication" EntityType="Self.HiringApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MineralReport" EntityType="Self.MineralReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Minerals" EntityType="Self.Minerals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profession" EntityType="Self.Profession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseApplication" EntityType="Self.PurchaseApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reserve" EntityType="Self.Reserve" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SolutionForStudy" EntityType="Self.SolutionForStudy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudyApplication" EntityType="Self.StudyApplication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudyCourse" EntityType="Self.StudyCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfFinancialActivity" EntityType="Self.TypeOfFinancialActivity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EquipmentReport_User" Association="Self.FK_EquipmentReport_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="EquipmentReport" EntitySet="EquipmentReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Export_Contract1" Association="Self.FK_Export_Contract1">
+            <End Role="Contract" EntitySet="Contract" />
+            <End Role="Export" EntitySet="Export" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Export_Minerals" Association="Self.FK_Export_Minerals">
+            <End Role="Minerals" EntitySet="Minerals" />
+            <End Role="Export" EntitySet="Export" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinancialReport_TypeOfFinancialActivity" Association="Self.FK_FinancialReport_TypeOfFinancialActivity">
+            <End Role="TypeOfFinancialActivity" EntitySet="TypeOfFinancialActivity" />
+            <End Role="FinancialReport" EntitySet="FinancialReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinancialReport_User" Association="Self.FK_FinancialReport_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="FinancialReport" EntitySet="FinancialReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiringApplication_Profession" Association="Self.FK_HiringApplication_Profession">
+            <End Role="Profession" EntitySet="Profession" />
+            <End Role="HiringApplication" EntitySet="HiringApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiringApplication_User" Association="Self.FK_HiringApplication_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="HiringApplication" EntitySet="HiringApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MineralReport_Export" Association="Self.FK_MineralReport_Export">
+            <End Role="Export" EntitySet="Export" />
+            <End Role="MineralReport" EntitySet="MineralReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MineralReport_User" Association="Self.FK_MineralReport_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="MineralReport" EntitySet="MineralReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseApplication_User" Association="Self.FK_PurchaseApplication_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="PurchaseApplication" EntitySet="PurchaseApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserve_Minerals" Association="Self.FK_Reserve_Minerals">
+            <End Role="Minerals" EntitySet="Minerals" />
+            <End Role="Reserve" EntitySet="Reserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyApplication_SolutionForStudy" Association="Self.FK_StudyApplication_SolutionForStudy">
+            <End Role="SolutionForStudy" EntitySet="SolutionForStudy" />
+            <End Role="StudyApplication" EntitySet="StudyApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyApplication_StudyCourse" Association="Self.FK_StudyApplication_StudyCourse">
+            <End Role="StudyCourse" EntitySet="StudyCourse" />
+            <End Role="StudyApplication" EntitySet="StudyApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyApplication_User" Association="Self.FK_StudyApplication_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="StudyApplication" EntitySet="StudyApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Profession" Association="Self.FK_User_Profession">
+            <End Role="Profession" EntitySet="Profession" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="ContractID" />
+          </Key>
+          <Property Name="ContractID" Type="Int32" Nullable="false" />
+          <Property Name="DateOfConclusion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateOfExpiration" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Export" Relationship="Self.FK_Export_Contract1" FromRole="Contract" ToRole="Export" />
+        </EntityType>
+        <EntityType Name="EquipmentReport">
+          <Key>
+            <PropertyRef Name="EquipmentReportID" />
+          </Key>
+          <Property Name="EquipmentReportID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TechicalDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EngineerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_EquipmentReport_User" FromRole="EquipmentReport" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Export">
+          <Key>
+            <PropertyRef Name="ExportID" />
+          </Key>
+          <Property Name="ExportID" Type="Int32" Nullable="false" />
+          <Property Name="MineralsID" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="ContractID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contract" Relationship="Self.FK_Export_Contract1" FromRole="Export" ToRole="Contract" />
+          <NavigationProperty Name="Minerals" Relationship="Self.FK_Export_Minerals" FromRole="Export" ToRole="Minerals" />
+          <NavigationProperty Name="MineralReport" Relationship="Self.FK_MineralReport_Export" FromRole="Export" ToRole="MineralReport" />
+        </EntityType>
+        <EntityType Name="FinancialReport">
+          <Key>
+            <PropertyRef Name="FinancialReportID" />
+          </Key>
+          <Property Name="FinancialReportID" Type="Int32" Nullable="false" />
+          <Property Name="Payment" Type="Int32" Nullable="false" />
+          <Property Name="TypeOfFinancialActivityID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AccountantID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TypeOfFinancialActivity" Relationship="Self.FK_FinancialReport_TypeOfFinancialActivity" FromRole="FinancialReport" ToRole="TypeOfFinancialActivity" />
+          <NavigationProperty Name="User" Relationship="Self.FK_FinancialReport_User" FromRole="FinancialReport" ToRole="User" />
+        </EntityType>
+        <EntityType Name="HiringApplication">
+          <Key>
+            <PropertyRef Name="HiringApplicationID" />
+          </Key>
+          <Property Name="HiringApplicationID" Type="Int32" Nullable="false" />
+          <Property Name="RequirementsDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProfessionID" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="IsHired_" Type="Boolean" Nullable="false" />
+          <Property Name="EmployerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Profession" Relationship="Self.FK_HiringApplication_Profession" FromRole="HiringApplication" ToRole="Profession" />
+          <NavigationProperty Name="User" Relationship="Self.FK_HiringApplication_User" FromRole="HiringApplication" ToRole="User" />
+        </EntityType>
+        <EntityType Name="MineralReport">
+          <Key>
+            <PropertyRef Name="MneralReportID" />
+          </Key>
+          <Property Name="MneralReportID" Type="Int32" Nullable="false" />
+          <Property Name="ExportID" Type="Int32" Nullable="false" />
+          <Property Name="Revenue" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ProductionDirectorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Export" Relationship="Self.FK_MineralReport_Export" FromRole="MineralReport" ToRole="Export" />
+          <NavigationProperty Name="User" Relationship="Self.FK_MineralReport_User" FromRole="MineralReport" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Minerals">
+          <Key>
+            <PropertyRef Name="MineralsID" />
+          </Key>
+          <Property Name="MineralsID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Export" Relationship="Self.FK_Export_Minerals" FromRole="Minerals" ToRole="Export" />
+          <NavigationProperty Name="Reserve" Relationship="Self.FK_Reserve_Minerals" FromRole="Minerals" ToRole="Reserve" />
+        </EntityType>
+        <EntityType Name="Profession">
+          <Key>
+            <PropertyRef Name="ProfessionID" />
+          </Key>
+          <Property Name="ProfessionID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HiringApplication" Relationship="Self.FK_HiringApplication_Profession" FromRole="Profession" ToRole="HiringApplication" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Profession" FromRole="Profession" ToRole="User" />
+        </EntityType>
+        <EntityType Name="PurchaseApplication">
+          <Key>
+            <PropertyRef Name="PurchaseApplicationID" />
+          </Key>
+          <Property Name="PurchaseApplicationID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <Property Name="SupplyAgentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_PurchaseApplication_User" FromRole="PurchaseApplication" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Reserve">
+          <Key>
+            <PropertyRef Name="ReserveID" />
+          </Key>
+          <Property Name="ReserveID" Type="Int32" Nullable="false" />
+          <Property Name="MineralsID" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Minerals" Relationship="Self.FK_Reserve_Minerals" FromRole="Reserve" ToRole="Minerals" />
+        </EntityType>
+        <EntityType Name="SolutionForStudy">
+          <Key>
+            <PropertyRef Name="SolutionForStudyID" />
+          </Key>
+          <Property Name="SolutionForStudyID" Type="Int32" Nullable="false" />
+          <Property Name="isConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="StudyApplication" Relationship="Self.FK_StudyApplication_SolutionForStudy" FromRole="SolutionForStudy" ToRole="StudyApplication" />
+        </EntityType>
+        <EntityType Name="StudyApplication">
+          <Key>
+            <PropertyRef Name="StudyApplicationID" />
+          </Key>
+          <Property Name="StudyApplicationID" Type="Int32" Nullable="false" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="SolutionID" Type="Int32" Nullable="false" />
+          <Property Name="WorkerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SolutionForStudy" Relationship="Self.FK_StudyApplication_SolutionForStudy" FromRole="StudyApplication" ToRole="SolutionForStudy" />
+          <NavigationProperty Name="StudyCourse" Relationship="Self.FK_StudyApplication_StudyCourse" FromRole="StudyApplication" ToRole="StudyCourse" />
+          <NavigationProperty Name="User" Relationship="Self.FK_StudyApplication_User" FromRole="StudyApplication" ToRole="User" />
+        </EntityType>
+        <EntityType Name="StudyCourse">
+          <Key>
+            <PropertyRef Name="StudyCourseID" />
+          </Key>
+          <Property Name="StudyCourseID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="YearsToStudy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StudyApplication" Relationship="Self.FK_StudyApplication_StudyCourse" FromRole="StudyCourse" ToRole="StudyApplication" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeOfFinancialActivity">
+          <Key>
+            <PropertyRef Name="TypeOfFinancialActivityID" />
+          </Key>
+          <Property Name="TypeOfFinancialActivityID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="FinancialReport" Relationship="Self.FK_FinancialReport_TypeOfFinancialActivity" FromRole="TypeOfFinancialActivity" ToRole="FinancialReport" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProfessionID" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EquipmentReport" Relationship="Self.FK_EquipmentReport_User" FromRole="User" ToRole="EquipmentReport" />
+          <NavigationProperty Name="FinancialReport" Relationship="Self.FK_FinancialReport_User" FromRole="User" ToRole="FinancialReport" />
+          <NavigationProperty Name="HiringApplication" Relationship="Self.FK_HiringApplication_User" FromRole="User" ToRole="HiringApplication" />
+          <NavigationProperty Name="MineralReport" Relationship="Self.FK_MineralReport_User" FromRole="User" ToRole="MineralReport" />
+          <NavigationProperty Name="Profession" Relationship="Self.FK_User_Profession" FromRole="User" ToRole="Profession" />
+          <NavigationProperty Name="PurchaseApplication" Relationship="Self.FK_PurchaseApplication_User" FromRole="User" ToRole="PurchaseApplication" />
+          <NavigationProperty Name="StudyApplication" Relationship="Self.FK_StudyApplication_User" FromRole="User" ToRole="StudyApplication" />
+        </EntityType>
+        <Association Name="FK_Export_Contract1">
+          <End Role="Contract" Type="Self.Contract" Multiplicity="1" />
+          <End Role="Export" Type="Self.Export" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contract">
+              <PropertyRef Name="ContractID" />
+            </Principal>
+            <Dependent Role="Export">
+              <PropertyRef Name="ContractID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentReport_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="EquipmentReport" Type="Self.EquipmentReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="EquipmentReport">
+              <PropertyRef Name="EngineerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Export_Minerals">
+          <End Role="Minerals" Type="Self.Minerals" Multiplicity="1" />
+          <End Role="Export" Type="Self.Export" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Minerals">
+              <PropertyRef Name="MineralsID" />
+            </Principal>
+            <Dependent Role="Export">
+              <PropertyRef Name="MineralsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MineralReport_Export">
+          <End Role="Export" Type="Self.Export" Multiplicity="1" />
+          <End Role="MineralReport" Type="Self.MineralReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Export">
+              <PropertyRef Name="ExportID" />
+            </Principal>
+            <Dependent Role="MineralReport">
+              <PropertyRef Name="ExportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinancialReport_TypeOfFinancialActivity">
+          <End Role="TypeOfFinancialActivity" Type="Self.TypeOfFinancialActivity" Multiplicity="1" />
+          <End Role="FinancialReport" Type="Self.FinancialReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfFinancialActivity">
+              <PropertyRef Name="TypeOfFinancialActivityID" />
+            </Principal>
+            <Dependent Role="FinancialReport">
+              <PropertyRef Name="TypeOfFinancialActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinancialReport_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="FinancialReport" Type="Self.FinancialReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="FinancialReport">
+              <PropertyRef Name="AccountantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiringApplication_Profession">
+          <End Role="Profession" Type="Self.Profession" Multiplicity="1" />
+          <End Role="HiringApplication" Type="Self.HiringApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profession">
+              <PropertyRef Name="ProfessionID" />
+            </Principal>
+            <Dependent Role="HiringApplication">
+              <PropertyRef Name="ProfessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HiringApplication_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="HiringApplication" Type="Self.HiringApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="HiringApplication">
+              <PropertyRef Name="EmployerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MineralReport_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="MineralReport" Type="Self.MineralReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MineralReport">
+              <PropertyRef Name="ProductionDirectorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserve_Minerals">
+          <End Role="Minerals" Type="Self.Minerals" Multiplicity="1" />
+          <End Role="Reserve" Type="Self.Reserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Minerals">
+              <PropertyRef Name="MineralsID" />
+            </Principal>
+            <Dependent Role="Reserve">
+              <PropertyRef Name="MineralsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Profession">
+          <End Role="Profession" Type="Self.Profession" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profession">
+              <PropertyRef Name="ProfessionID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ProfessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseApplication_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="PurchaseApplication" Type="Self.PurchaseApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="PurchaseApplication">
+              <PropertyRef Name="SupplyAgentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyApplication_SolutionForStudy">
+          <End Role="SolutionForStudy" Type="Self.SolutionForStudy" Multiplicity="1" />
+          <End Role="StudyApplication" Type="Self.StudyApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SolutionForStudy">
+              <PropertyRef Name="SolutionForStudyID" />
+            </Principal>
+            <Dependent Role="StudyApplication">
+              <PropertyRef Name="SolutionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyApplication_StudyCourse">
+          <End Role="StudyCourse" Type="Self.StudyCourse" Multiplicity="1" />
+          <End Role="StudyApplication" Type="Self.StudyApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudyCourse">
+              <PropertyRef Name="StudyCourseID" />
+            </Principal>
+            <Dependent Role="StudyApplication">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyApplication_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="StudyApplication" Type="Self.StudyApplication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="StudyApplication">
+              <PropertyRef Name="WorkerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PrEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contract" EntityType="Self.Contract" />
+          <EntitySet Name="EquipmentReport" EntityType="Self.EquipmentReport" />
+          <EntitySet Name="Export" EntityType="Self.Export" />
+          <EntitySet Name="FinancialReport" EntityType="Self.FinancialReport" />
+          <EntitySet Name="HiringApplication" EntityType="Self.HiringApplication" />
+          <EntitySet Name="MineralReport" EntityType="Self.MineralReport" />
+          <EntitySet Name="Minerals" EntityType="Self.Minerals" />
+          <EntitySet Name="Profession" EntityType="Self.Profession" />
+          <EntitySet Name="PurchaseApplication" EntityType="Self.PurchaseApplication" />
+          <EntitySet Name="Reserve" EntityType="Self.Reserve" />
+          <EntitySet Name="SolutionForStudy" EntityType="Self.SolutionForStudy" />
+          <EntitySet Name="StudyApplication" EntityType="Self.StudyApplication" />
+          <EntitySet Name="StudyCourse" EntityType="Self.StudyCourse" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TypeOfFinancialActivity" EntityType="Self.TypeOfFinancialActivity" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Export_Contract1" Association="Self.FK_Export_Contract1">
+            <End Role="Contract" EntitySet="Contract" />
+            <End Role="Export" EntitySet="Export" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentReport_User" Association="Self.FK_EquipmentReport_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="EquipmentReport" EntitySet="EquipmentReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Export_Minerals" Association="Self.FK_Export_Minerals">
+            <End Role="Minerals" EntitySet="Minerals" />
+            <End Role="Export" EntitySet="Export" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MineralReport_Export" Association="Self.FK_MineralReport_Export">
+            <End Role="Export" EntitySet="Export" />
+            <End Role="MineralReport" EntitySet="MineralReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinancialReport_TypeOfFinancialActivity" Association="Self.FK_FinancialReport_TypeOfFinancialActivity">
+            <End Role="TypeOfFinancialActivity" EntitySet="TypeOfFinancialActivity" />
+            <End Role="FinancialReport" EntitySet="FinancialReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinancialReport_User" Association="Self.FK_FinancialReport_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="FinancialReport" EntitySet="FinancialReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiringApplication_Profession" Association="Self.FK_HiringApplication_Profession">
+            <End Role="Profession" EntitySet="Profession" />
+            <End Role="HiringApplication" EntitySet="HiringApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HiringApplication_User" Association="Self.FK_HiringApplication_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="HiringApplication" EntitySet="HiringApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MineralReport_User" Association="Self.FK_MineralReport_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="MineralReport" EntitySet="MineralReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserve_Minerals" Association="Self.FK_Reserve_Minerals">
+            <End Role="Minerals" EntitySet="Minerals" />
+            <End Role="Reserve" EntitySet="Reserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Profession" Association="Self.FK_User_Profession">
+            <End Role="Profession" EntitySet="Profession" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseApplication_User" Association="Self.FK_PurchaseApplication_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="PurchaseApplication" EntitySet="PurchaseApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyApplication_SolutionForStudy" Association="Self.FK_StudyApplication_SolutionForStudy">
+            <End Role="SolutionForStudy" EntitySet="SolutionForStudy" />
+            <End Role="StudyApplication" EntitySet="StudyApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyApplication_StudyCourse" Association="Self.FK_StudyApplication_StudyCourse">
+            <End Role="StudyCourse" EntitySet="StudyCourse" />
+            <End Role="StudyApplication" EntitySet="StudyApplication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyApplication_User" Association="Self.FK_StudyApplication_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="StudyApplication" EntitySet="StudyApplication" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PrModelContainer" CdmEntityContainer="PrEntities">
+          <EntitySetMapping Name="Contract">
+            <EntityTypeMapping TypeName="PrModel.Contract">
+              <MappingFragment StoreEntitySet="Contract">
+                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+                <ScalarProperty Name="DateOfConclusion" ColumnName="DateOfConclusion" />
+                <ScalarProperty Name="DateOfExpiration" ColumnName="DateOfExpiration" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentReport">
+            <EntityTypeMapping TypeName="PrModel.EquipmentReport">
+              <MappingFragment StoreEntitySet="EquipmentReport">
+                <ScalarProperty Name="EquipmentReportID" ColumnName="EquipmentReportID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TechicalDescription" ColumnName="TechicalDescription" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="EngineerID" ColumnName="EngineerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Export">
+            <EntityTypeMapping TypeName="PrModel.Export">
+              <MappingFragment StoreEntitySet="Export">
+                <ScalarProperty Name="ExportID" ColumnName="ExportID" />
+                <ScalarProperty Name="MineralsID" ColumnName="MineralsID" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FinancialReport">
+            <EntityTypeMapping TypeName="PrModel.FinancialReport">
+              <MappingFragment StoreEntitySet="FinancialReport">
+                <ScalarProperty Name="FinancialReportID" ColumnName="FinancialReportID" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="TypeOfFinancialActivityID" ColumnName="TypeOfFinancialActivityID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AccountantID" ColumnName="AccountantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HiringApplication">
+            <EntityTypeMapping TypeName="PrModel.HiringApplication">
+              <MappingFragment StoreEntitySet="HiringApplication">
+                <ScalarProperty Name="HiringApplicationID" ColumnName="HiringApplicationID" />
+                <ScalarProperty Name="RequirementsDescription" ColumnName="RequirementsDescription" />
+                <ScalarProperty Name="ProfessionID" ColumnName="ProfessionID" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="IsHired_" ColumnName="IsHired?" />
+                <ScalarProperty Name="EmployerID" ColumnName="EmployerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MineralReport">
+            <EntityTypeMapping TypeName="PrModel.MineralReport">
+              <MappingFragment StoreEntitySet="MineralReport">
+                <ScalarProperty Name="MneralReportID" ColumnName="MneralReportID" />
+                <ScalarProperty Name="ExportID" ColumnName="ExportID" />
+                <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ProductionDirectorID" ColumnName="ProductionDirectorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Minerals">
+            <EntityTypeMapping TypeName="PrModel.Minerals">
+              <MappingFragment StoreEntitySet="Minerals">
+                <ScalarProperty Name="MineralsID" ColumnName="MineralsID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profession">
+            <EntityTypeMapping TypeName="PrModel.Profession">
+              <MappingFragment StoreEntitySet="Profession">
+                <ScalarProperty Name="ProfessionID" ColumnName="ProfessionID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseApplication">
+            <EntityTypeMapping TypeName="PrModel.PurchaseApplication">
+              <MappingFragment StoreEntitySet="PurchaseApplication">
+                <ScalarProperty Name="PurchaseApplicationID" ColumnName="PurchaseApplicationID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="SupplyAgentID" ColumnName="SupplyAgentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reserve">
+            <EntityTypeMapping TypeName="PrModel.Reserve">
+              <MappingFragment StoreEntitySet="Reserve">
+                <ScalarProperty Name="ReserveID" ColumnName="ReserveID" />
+                <ScalarProperty Name="MineralsID" ColumnName="MineralsID" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SolutionForStudy">
+            <EntityTypeMapping TypeName="PrModel.SolutionForStudy">
+              <MappingFragment StoreEntitySet="SolutionForStudy">
+                <ScalarProperty Name="SolutionForStudyID" ColumnName="SolutionForStudyID" />
+                <ScalarProperty Name="isConfirmed" ColumnName="isConfirmed" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudyApplication">
+            <EntityTypeMapping TypeName="PrModel.StudyApplication">
+              <MappingFragment StoreEntitySet="StudyApplication">
+                <ScalarProperty Name="StudyApplicationID" ColumnName="StudyApplicationID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="SolutionID" ColumnName="SolutionID" />
+                <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudyCourse">
+            <EntityTypeMapping TypeName="PrModel.StudyCourse">
+              <MappingFragment StoreEntitySet="StudyCourse">
+                <ScalarProperty Name="StudyCourseID" ColumnName="StudyCourseID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="YearsToStudy" ColumnName="YearsToStudy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PrModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfFinancialActivity">
+            <EntityTypeMapping TypeName="PrModel.TypeOfFinancialActivity">
+              <MappingFragment StoreEntitySet="TypeOfFinancialActivity">
+                <ScalarProperty Name="TypeOfFinancialActivityID" ColumnName="TypeOfFinancialActivityID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="PrModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="ProfessionID" ColumnName="ProfessionID" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

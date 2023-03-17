@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bd92778b54364af49a80a181bff452a2" Name="Diagram1">
+        <EntityTypeShape EntityType="PrModel.Contract" Width="1.5" PointX="3.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.EquipmentReport" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.Export" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.FinancialReport" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.HiringApplication" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.MineralReport" Width="1.5" PointX="8.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.Minerals" Width="1.5" PointX="3.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.Profession" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.PurchaseApplication" Width="1.5" PointX="5.25" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.Reserve" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.SolutionForStudy" Width="1.5" PointX="6" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.StudyApplication" Width="1.5" PointX="8.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.StudyCourse" Width="1.5" PointX="6" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.TypeOfFinancialActivity" Width="1.5" PointX="6" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrModel.User" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <AssociationConnector Association="PrModel.FK_Export_Contract1" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_EquipmentReport_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_Export_Minerals" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_MineralReport_Export" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_FinancialReport_TypeOfFinancialActivity" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_FinancialReport_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_HiringApplication_Profession" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_HiringApplication_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_MineralReport_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_Reserve_Minerals" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_User_Profession" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_PurchaseApplication_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_StudyApplication_SolutionForStudy" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_StudyApplication_StudyCourse" ManuallyRouted="false" />
+        <AssociationConnector Association="PrModel.FK_StudyApplication_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
